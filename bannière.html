@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./assets/stylesheet/css/banniere.css">
+</head>
+  <body>
+    <h1>Bannière JS (Methode commercial pour proposer une promo ou une possibilité d'inscription)</h1>
+     <div class="brief">
+      <p>
+        Vous développez un  site marchand.
+        <br>1/ Faites apparaitre une bannière (proposition d'inscription à la newsletter) 5 secondes après le chargement de la page.
+        <br>2/ Cette bannière doit être fixer en bas de page.
+        <br>3/ Placez un bouton en haut à droite de la bannière pour fermer celle-ci.
+        <br>(voir bannière.html)
+      </p>
+    </div>
+    <div id="main" class="afficher">
+      <div id="pop-up">
+        <button id="bouton">X</button>
+        <h3>Inscrivez vous à notre newsletter</h3>
+        <form >
+          <input type="Mon email">
+          <button>Envoyer</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      //TODO
+      // selectionner la bannière et la stocker dans une variable 
+      const main = document.querySelector('#main')
+      // selectionner le bouton  et le stocker dans une variable 
+      const bouton = document.querySelector('#bouton')
+      // creer une fonction qui nous permet d'afficher le message de bienvenue une fois on l'appelle 
+      const messageBienvenue = ()=>{
+        main.classList.remove("afficher")
+      }
+      // appeller la fonction dans 5s aprés le chargement de la page 
+      setTimeout(messageBienvenue, 5000)
+      // mettre un ecouteur qui nous permet de fermer la fenetre de msg en clicker sur le bouton 
+      bouton.addEventListener("click", ()=>{
+        main.classList.add("afficher")
+      })
+
+    </script>
+  </body>
+</html>

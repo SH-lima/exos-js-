@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./assets/stylesheet/css/valid-form.css">
+</head>
+  <body>
+    <h1 style="margin-top: 300px; text-align: center;">Formulaire et validation</h1>
+    <div class="banner">
+      <p>Codez une fonction qui assure la sécurité d'une connexion via ce formulaire.</p>
+      <p>Le prénom doit faire moins de 15 caractères et le mot de passe doit faire 8 caractères minimum </p>
+      <p>Si l'une de ces deux conditions n'est pas remplis, un message d'erreur doit s'afficher par le biais de la div 'error-message'. Dans le cas contraire affichez un message de succès. </p>
+      <p>Une checkbox permettra de voir le password en toute lettre.</p>
+      <p>Challenge supplémentaire : lorsque l'on commence à entrer une chaine de caractère dans le formulaire 'password', celui-ci prend des contours (border...) rouge. Puis passe au vert dès lors que l'on rentre 8 caractères ou plus.<br>(voir valid-form.html)</p>
+    </div>
+    <form id="valid-form">
+      <input class="default-border" id="login" type="text" label="login" placeholder="Login">
+      <input class="default-border" id="pwd" type="password" label="pwd" placeholder="Mot de passe" minlength="5">
+      <input class="default-border" id="button" type="submit" value="Submit" style="height: 37px;">
+    </form>
+    <p class="watchPwd"><input type="checkbox" id="checkbox" name="checkbox">Voir le mot de passe.</p>
+    <div id="error-message"></div>
+    <script>
+
+// ------------------------------Le prénom doit faire moins de 15 caractères  
+      //selectionner le champ de prénom  
+      const login = document.querySelector("#login")
+      // creer une variable vide ou on va stocker le prenom
+      let valeurLogin = ""
+      // mettre un ecouteur en sortant de champs de prenom 
+      login.addEventListener("blur", ()=>{
+        // récupérer le prenom a été entré par l'utilisateur et le stocker dans une variable
+        const valeur = login.value
+        // si la variable de prenom est vide ou contient une chaine de charactère de moins de 15 caractères
+        if(valeur.length != 0 & valeur.length < 15){
+          // le champs de prenom prend la couleur rouge 
+         login.classList.add("bad-password") 
+        }else{
+          // si non 
+        login.classList.remove("bad-password")
+        // on va stocker le prenom dans la variable qui on a déje creé
+        valeurLogin+=valeur
+        } })
+        
+
+// -------------------------le mot de passe doit faire 8 caractères minimum
+        // selectionner le champs de password
+        const password = document.querySelector("#pwd")
+        // creer une variable dans laquelle on va stocker le password
+        let  valeurPassword =""
+        // mettre un ecouteur en sortant de champs de password
+      password.addEventListener("blur", ()=>{
+        console.log(password.value)
+        const valeur = password.value
+        if(valeur.length != 0 & valeur.length < 8){
+         password.classList.add("bad-password") 
+        }else{
+        password.classList.add("good-password")
+        valeurPassword+=valeur
+        }})
+
+
+//  lorsque l'on commence à entrer une chaine de caractère dans le formulaire 'password', celui-ci prend des contours (border...) rouge. Puis passe au vert dès lors que l'on rentre 8 caractères ou plus
+        password.addEventListener("input", ()=>{
+        const valeur = password.value
+        if(valeur.length != 0 & valeur.length < 8){
+         password.classList.add("bad-password") 
+        }else{ 
+        password.classList.remove("bad-password")
+        password.classList.add("good-password")
+        }})
+
+ // Si l'une de ces deux champs n'est pas remplis, un message d'erreur s'afficher . Dans le cas contraire affichez un message de succès.
+        const errorMessage = document.querySelector("#error-message") 
+        const submit = document.querySelector("#button")
+        submit.addEventListener("click", (e)=>{
+          e.preventDefault();
+        if(valeurLogin.length===0 | valeurPassword.length===0) {
+          errorMessage.innerHTML="Il faut entrer le prénom et le mot de passe svp"
+          errorMessage.classList.add("error-message")
+        }else {
+          errorMessage.innerHTML="Félicitation "
+          errorMessage.classList.add("good-message")
+        }  
+        })
+
+
+// Une checkbox permettra de voir le password en toute lettre
+        let isFlipped = true
+        const checkbox = document.querySelector("#checkbox")
+        checkbox.addEventListener("click",()=>{
+          
+          if(isFlipped===true){
+          password.setAttribute("type", "text") 
+          isFlipped= false 
+          }else {
+          password.setAttribute("type", "password") 
+          isFlipped = true
+          }
+        })
+        
+        
+    </script>
+  </body>
+</html>

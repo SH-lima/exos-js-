@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./assets/stylesheet/css/shopping-list.css">
+</head>
+  <body>
+    <h1>Shopping list</h1>
+    <div class="brief">
+      <p>
+        J'aimerai afficher ma liste de course.
+        <br>2/ Génial ce formulaire va le permettre. Editez un fichier javascript permettant de lister ma liste de course sous le formulaire.
+        <br>3/ Le bouton "supprimer ma liste" doit effacer la liste à l'écran.
+        <br>(voir shopping-list.html)
+      </p>
+    </div>
+    <form action="" id="formulaire" style="text-align: center;">
+      <input type="text" placeholder="ex: poire">
+    <button id="bouton">Envoyer</button>
+    <button id="Supprime">Supprimer ma liste</button>
+    </form>
+    <div >Liste : </div>
+    <div id="maListeDeCourse"> </div>
+    <script>
+      //TODO
+      // selectionner le bouton envoyer 
+      const bouton = document.querySelector('#bouton')
+      // selectionner le formulaire  
+      const article = document.querySelector('input')
+      //  selectionner l'espace ou on va afficher la liste des course 
+      const maListeDeCourse = document.querySelector('#maListeDeCourse')
+      // creer un tableau vide ou on va stocker les articles de course
+      let liste = []
+      // mettre un ecouteur pour le bouton envoyer 
+      bouton.addEventListener("click", (event)=>{
+        // arreter le comportement par defaut 
+        event.preventDefault()
+        // récupérer l'articles saisie sur le formulaire et le stocker dans une variable
+        const listeArticle = article.value
+        // ajouter l'article au tableau de liste de course  
+        liste = liste + "  " +listeArticle
+        // afficher le tableau dans la page 
+        maListeDeCourse.innerHTML= liste
+      })
+      // selectionner le bouton supprimer 
+      const supprime = document.querySelector('#Supprime')
+      // mettre un ecouteur sur le bouton 
+      supprime.addEventListener("click",()=>{
+        // rafraichis la page en clickant sur le bouton 
+        document.location.reload();
+      } )
+      
+    </script>
+  </body>
+</html>
