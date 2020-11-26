@@ -13,15 +13,19 @@
   <script>
 
     const images = ['slideImg/nature (1).jpg', 'slideImg/nature (2).jpg', 'slideImg/nature (3).jpg']
-    
-    images.forEach(() => {
-      if(i<images.length){
-      console.log(images[i])
+    let i=0
+    const nextImage = ()=>{
+      document.slide.src = images[i]
+      i = i + 1
+      if(i >= images.length){
+        i = 0;
+      }
       setTimeout(
-      document.slide.src = images[i]  
-      ,5000*(i)) 
-             
-      }})
+      nextImage,5000  
+      )
+      
+    }
+    nextImage()
 
 
       

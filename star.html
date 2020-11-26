@@ -24,32 +24,20 @@
   <script>
     //TODO
     let stars = document.querySelectorAll("li")
-    console.log(stars[0])
-    stars[0].addEventListener("click", ()=>{
-      stars[0].classList.toggle("star-checked")
-    })
-    stars[1].addEventListener("click", ()=>{
-      stars[0].classList.toggle("star-checked")
-      stars[1].classList.toggle("star-checked")
-    })
-    stars[2].addEventListener("click", ()=>{
-      stars[0].classList.toggle("star-checked")
-      stars[1].classList.toggle("star-checked")
-      stars[2].classList.toggle("star-checked")
-    })
-    stars[3].addEventListener("click", ()=>{
-      stars[0].classList.toggle("star-checked")
-      stars[1].classList.toggle("star-checked")
-      stars[2].classList.toggle("star-checked")
-      stars[3].classList.toggle("star-checked")
-    })
-    stars[4].addEventListener("click", ()=>{
-      stars[0].classList.toggle("star-checked")
-      stars[1].classList.toggle("star-checked")
-      stars[2].classList.toggle("star-checked")
-      stars[3].classList.toggle("star-checked")
-      stars[4].classList.toggle("star-checked")
-    })
+    // selectionner tous les elements de tableau 
+    for (let index=0; index<stars.length; index++){
+      stars[index].addEventListener("click", ()=>{
+      // selectionner de premier element au index 
+      for (let a = 0; a < index+1; a++) {
+      stars[a].classList.add("star-checked")      
+      } 
+      // selectionner de element apres index au dernier element 
+      for (let b = index+1; b < stars.length; b++) {
+        stars[b].classList.remove("star-checked")   
+      }
+      }) 
+     
+    }
 
   </script>
 </body>
