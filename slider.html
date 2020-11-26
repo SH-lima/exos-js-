@@ -9,9 +9,33 @@
   <h1>Vous trouverez dans le dossier '/assets/images/slider', 4 photos. Codez un slider
   <br>(voir slider.html)
   </h1>
-  <img id="slide" width="400" height="300">
+  <img name="slide" width="400" height="300">
   <script>
-    //TODO
+
+    const images = ['slideImg/nature (1).jpg', 'slideImg/nature (2).jpg', 'slideImg/nature (3).jpg']
+    
+    images.forEach(() => {
+      if(i<images.length){
+      console.log(images[i])
+      setTimeout(
+      document.slide.src = images[i]  
+      ,5000*(i)) 
+             
+      }})
+
+
+      
+
+      
+      
+    
+
+        
+      
+     
+     
+      
+    
   </script>
 </body>
 </html>

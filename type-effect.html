@@ -6,11 +6,29 @@
   </head>
   <body>
     <h2>Faire apparaitre le mots de votre choix lettre par lettre dans la balise 'h1' (voir code...)
-    <br>(voir type-effect.html)
-    </h2>
+    <br>(voir type-effect.html)</h2>
     <h1></h1>
   <script>
     //TODO
+    // selectionner le h1
+    const msg = document.querySelector("h1")
+    // stocker un msg dans une variable
+    const texte = "hello world"
+    // convertir la chaine de caractères en tableau 
+    const texte2 = texte.split("")
+    // pour chaque element de tableau
+    for (let index = 0; index < texte2.length; index++) {
+      // creer une fonction qui nous permet a injecter un seule element de tableau dans h1
+      const textTypeEffect = ()=>{
+      msg.insertAdjacentHTML("beforeend",`<span>${texte2[index]}</span>`)
+      }
+      // pour chaque element de tableau , on appelle la fonction avec un décalage de 0.1s entre les elements 
+      setTimeout(textTypeEffect,100*(index))
+      
+    }  
+    
+    
+
   </script>
   </body>
 </html>
